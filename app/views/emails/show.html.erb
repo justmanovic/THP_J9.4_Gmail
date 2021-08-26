@@ -1,0 +1,8 @@
+<h1> <%= @email.object %> </h1>
+<small> Received on: <%= @email.created_at.to_s[0..9] %> </small>
+
+<p> <%= @email.body %> </p>
+
+
+<%= link_to "Supprimer", email_path(@email.id), method: :delete, class:'btn btn-danger', remote:false%>
+<%= link_to "Marquer comme non lu", email_path(@email.id), method: :patch, class:'btn btn-primary', remote:false %>

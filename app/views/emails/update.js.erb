@@ -1,0 +1,9 @@
+updateList()
+
+function updateList(){
+  let table = document.getElementsByTagName("table")[0]
+  console.log(table)
+  let section = table.closest("section")
+  table.remove()
+  section.insertAdjacentHTML("beforeend", "<%= j render "emails_list" %>")
+} 

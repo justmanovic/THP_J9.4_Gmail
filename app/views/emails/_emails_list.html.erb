@@ -6,9 +6,19 @@
     <th>Machine</th>
   </tr>
   <% @emails.each do |email|%>
-    <tr>
-      <td><%= email.object %></td>
+    <tr <%= (email.is_read? == true) ? "class=read" : "class=pas_lu"%> >
+      <td><%= email.id %></td>
+      <td><%= link_to email_path(email.id) do %>
+          <%= email.object%>
+          <% end %>
+      </td>
       <td><%= email.body %></td>
+      <td><%= link_to "Supprimer", email_path(email.id), method: :delete, class:'btn btn-danger', remote:true%></td>
+      <% if email.is_read? == true %>
+      <td><%= link_to "Marquer comme non lu", email_path(email.id), method: :patch, class:'btn btn-primary', remote:true%> </td>
+      <% else %>
+      <td><%= link_to "Marquer comme lu", email_path(email.id), method: :patch, class:'btn btn-primary', remote:true%> </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
