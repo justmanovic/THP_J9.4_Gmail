@@ -3,6 +3,7 @@ class EmailsController < ApplicationController
 
   def index
     @emails = Email.all.sort{|a,b| b.id<=>a.id}
+    @unread_emails = Email.where(is_read?:false).count
   end
 
   def create
@@ -34,36 +35,16 @@ class EmailsController < ApplicationController
       format.html {redirect_to root_path}
       format.js {}
     end   
-
   end
 
   def update
-    # puts "🚌"*60
-    # puts params
-    # puts "🚌"*60
     @email = Email.find(params[:id])
-    # puts "🚛"*60
-    # puts @email.id
-    puts "🚛"*60
-    puts @email.is_read?
-    puts "🏎"*60
-
     @email.update(is_read?: !@email.is_read?)
-
-    # if !@email.is_read?
-    #   @email.update(is_read? :true)
-    # else @email.update(is_read? :false)
-
-    # end
-    # @email.update(params.require(:data).permit(:is_read?))
-
-
     @emails = Email.all.sort{|a,b| b.id<=>a.id}
     respond_to do |format|
       format.html {redirect_to root_path}
       format.js {}
     end   
-
   end
 
 

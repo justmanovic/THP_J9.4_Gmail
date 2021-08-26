@@ -1,0 +1,41 @@
+.navbar{
+  padding:1rem;
+  background-color:black;
+  color:white;
+}
+
+.navbar a{
+  color:inherit;
+}
+
+.collapse.navbar-collapse{
+  display:flex;
+  justify-content:space-between;
+
+}
+
+.right{
+  display:flex;
+  align-items:flex-end;
+  gap:1rem;
+}
+
+.right > div{
+  display:flex;
+  flex-direction:column;
+  gap:0.25rem;
+  text-align:right;
+}
+
+.navbar-brand{
+  font-size:2rem;
+}
+
+a.nav-link{
+  padding:0;
+  font-size:0.8rem;
+}
+
+small{
+  text-decoration:underline;
+}

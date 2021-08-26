@@ -1,38 +1,40 @@
 
-<table>
-  <tr>
-    <th>Object</th>
-    <th>Body</th>
-    <th>Machine</th>
-  </tr>
+<table class='table'>
+  <thead class="thead-dark">
+    <tr>
+      <th>Object</th>
+      <th>Body</th>
+      <th>Delete</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
   <% @emails.each do |email|%>
     <tr <%= (email.is_read? == true) ? "class=read" : "class=pas_lu"%> >
-      <td><%= email.id %></td>
       <td><%= link_to email_path(email.id) do %>
           <%= email.object%>
           <% end %>
       </td>
+
       <td><%= email.body %></td>
-      <% if current_user%>
-      <td><%= link_to  email_path(email.id), method: :delete, class:'btn btn-danger', remote:true do%>
-      <i class="far fa-trash-alt"></i>
-            <% end %>
-
+        <% if current_user%>
+          <td><%= link_to  email_path(email.id), method: :delete, class:'btn btn-danger', remote:true do%>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
       </td>
+
       <% if email.is_read? == true %>
-      <td><%= link_to  email_path(email.id), method: :patch, class:'btn btn-primary', remote:true do%>
-      <i class="far fa-envelope-open"></i>
-            <% end %>
-
-       </td>
+        <td><%= link_to email_path(email.id), method: :patch, class:'btn btn-primary', remote:true do%>
+          <i class="far fa-envelope-open"></i>
+        </td>
+        <% end %>
       <% else %>
-      <td><%= link_to  email_path(email.id), method: :patch, class:'btn btn-primary', remote:true do %>
-      <i class="far fa-envelope"></i>
+        <td><%= link_to  email_path(email.id), method: :patch, class:'btn btn-primary', remote:true do %>
+          <i class="far fa-envelope"></i>
+        </td>
+        <% end %>
+       <% end %>
       <% end %>
-
-       </td>
-      <% end %>
-           <% end %>
     </tr>
   <% end %>
 </table>
