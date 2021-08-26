@@ -13,12 +13,14 @@
           <% end %>
       </td>
       <td><%= email.body %></td>
+      <% if current_user%>
       <td><%= link_to "Supprimer", email_path(email.id), method: :delete, class:'btn btn-danger', remote:true%></td>
       <% if email.is_read? == true %>
       <td><%= link_to "Marquer comme non lu", email_path(email.id), method: :patch, class:'btn btn-primary', remote:true%> </td>
       <% else %>
       <td><%= link_to "Marquer comme lu", email_path(email.id), method: :patch, class:'btn btn-primary', remote:true%> </td>
       <% end %>
+           <% end %>
     </tr>
   <% end %>
 </table>

@@ -3,5 +3,10 @@ table{
 }
 
 tr{
-  border:1px black solid;
+  height:2rem;
+  border-bottom:1px rgba(0,0,0,0.1) solid;
+}
+
+body{
+  margin:3rem;
 }
