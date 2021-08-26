@@ -1,3 +1,7 @@
 table{
   font-weight:bolder;
 }
+
+tr{
+  border:1px black solid;
+}
