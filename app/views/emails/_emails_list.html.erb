@@ -1,0 +1,14 @@
+
+<table>
+  <tr>
+    <th>Object</th>
+    <th>Body</th>
+    <th>Machine</th>
+  </tr>
+  <% @emails.each do |email|%>
+    <tr>
+      <td><%= email.object %></td>
+      <td><%= email.body %></td>
+    </tr>
+  <% end %>
+</table>
