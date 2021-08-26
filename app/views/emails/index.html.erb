@@ -1,4 +1,15 @@
-<h1>HELLO</h1>
-<%= link_to 'recevoir un email', emails_path, method: :post, class:'btn btn-primary', remote:true%>
+
+<% if current_user %>
+<div style='display:flex; align-items:center;gap:1rem'>
+<%= link_to emails_path, method: :post, class:'btn btn-primary', remote:true do %>
+<i class="fas fa-sync"></i>
+<% end %>
+<h3>Hello, <%= current_user.email%> </h3></div>
+
+<% else %>
+<h3>Please log-in!</h3>
+<% end %>
+
+
 
 <%= render 'emails_list'%> 
