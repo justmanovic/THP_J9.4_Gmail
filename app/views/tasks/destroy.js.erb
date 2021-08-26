@@ -1,0 +1,8 @@
+updateList()
+function updateList(){
+let Ul = document.querySelectorAll("ul")[1]
+let UlParent = Ul.parentNode
+Ul.remove()
+console.log(UlParent)
+UlParent.insertAdjacentHTML("beforeend", "<%= j render "task_list2" %>")
+}

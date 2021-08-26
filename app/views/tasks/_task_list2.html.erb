@@ -9,7 +9,7 @@
             <% unless task.deadline.nil? %>
               , to read: <%= task.deadline.strftime('%D')  %>
             <% end %>
-            <%=link_to task_path(task.id), method: :delete, remote: true do  %>
+            <%=link_to task_path(task.id), method: :delete, remote: user_signed_in? do  %>
               <i class="fas fa-bacon"></i>
             <%end%>
           </li>
