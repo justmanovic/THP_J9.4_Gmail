@@ -5,16 +5,26 @@ before_action :authenticate_user!
   end
 
   def create
+    puts "❤️"*60
+    puts params
+    puts "❤️"*60
     @task = Task.new(task_params)
-    @category = Category.find(category_params)
+    @category = Category.find(@task.category_id)
     @task.category = @category
+    @categories = Category.all
+    # @tasks = Task.all
     if @task.save
-      redirect_to root_path
       flash[:notice] = "Task created"
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        format.js {}
+      end
     else
       redirect_to root_path
       flash[:notice] = "Please try again"
     end
+
+
   end
 
   def edit
@@ -35,6 +45,7 @@ before_action :authenticate_user!
   end
 
   def destroy
+    puts params
     @task = Task.find(params[:id])
     @task.destroy
     redirect_to root_path
@@ -44,11 +55,6 @@ before_action :authenticate_user!
   private
 
   def task_params
-    params.permit(:title, :deadline, :description)
+    params.permit(:title, :deadline, :category_id)
   end
-
-  def category_params
-    params.require(:Category)
-  end
-
 end
