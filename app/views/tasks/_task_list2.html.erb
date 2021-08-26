@@ -10,7 +10,7 @@
               , to read: <%= task.deadline.strftime('%D')  %>
             <% end %>
             <%=link_to task_path(task.id), method: :delete, remote: user_signed_in? do  %>
-              <i class="fas fa-bacon"></i>
+              <i class="far fa-trash-alt"></i>
             <%end%>
           </li>
         <% end %>

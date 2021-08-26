@@ -48,6 +48,7 @@ before_action :authenticate_user!
     puts params
     @task = Task.find(params[:id])
     @task.destroy
+    @categories = Category.all
     respond_to do |format|
       format.html {redirect_to root_path}
       format.js {}
