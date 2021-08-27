@@ -8,7 +8,8 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.new(object:Faker::Book.title, body:Faker::TvShows::SouthPark.quote)
-    
+    @unread_emails = Email.where(is_read?:false).count
+
     if @email.save
       @emails = Email.all.sort{|a,b| b.id<=>a.id}
       respond_to do |format|
@@ -25,6 +26,8 @@ class EmailsController < ApplicationController
   def show
     @email = Email.find(params[:id])
     @email.update(is_read?: true)
+    @hello = "hello"
+
   end
 
   def destroy
@@ -40,7 +43,7 @@ class EmailsController < ApplicationController
   def update
     @email = Email.find(params[:id])
     @email.update(is_read?: !@email.is_read?)
-    @emails = Email.all.sort{|a,b| b.id<=>a.id}
+    @emails = Email.all.sort{|a,b| b.id <=> a.id}
     respond_to do |format|
       format.html {redirect_to root_path}
       format.js {}

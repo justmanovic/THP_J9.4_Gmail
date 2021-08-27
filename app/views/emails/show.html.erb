@@ -3,6 +3,5 @@
 
 <p> <%= @email.body %> </p>
 
-
 <%= link_to "Supprimer", email_path(@email.id), method: :delete, class:'btn btn-danger', remote:false%>
 <%= link_to "Marquer comme non lu", email_path(@email.id), method: :patch, class:'btn btn-primary', remote:false %>

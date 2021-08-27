@@ -5,5 +5,9 @@ function updateList(){
   console.log(table)
   let section = table.closest("section")
   table.remove()
+  let count_unread = document.querySelector('#count_unread')
+  count_unread.innerHTML = "Vous avez <%= @unread_emails %> emails non lus !"
+  console.log(count_unread.innerHTML)
+
   section.insertAdjacentHTML("beforeend", "<%= j render "emails_list" %>")
 }
